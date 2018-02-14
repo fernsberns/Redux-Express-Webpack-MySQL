@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import MessageReducer from './message_reducer';
+import booksReducer from './book_reducer';
 
 const rootReducer = combineReducers({
-  fetchMessage: MessageReducer
+  getBooks: booksReducer
 });
 
 export default rootReducer;

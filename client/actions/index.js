@@ -1,16 +1,23 @@
-import axios from 'axios';
-import { FETCH_MESSAGE } from './types';
+import getData from '../components/app'
+import { GET_BOOK } from './types';
 
-const ROOT_URL = 'http://localhost:3000';
 
-export function fetchMessage(){
-  return function(dispatch){
-    axios.get(`${ROOT_URL}/example`)
-      .then(response => {
-        dispatch({
-          type: FETCH_MESSAGE,
-          payload: response.data.message
-        });
-      });
-  }
+
+export function getBooks(book){
+  console.log('This works, apparently.');
+  
+  const URL = "http://localhost:3000/api/books";
+  return fetch(URL, { method: 'GET',type: 'GET_BOOK',
+  payload: book})
+     .then( response => Promise.all([response, response.json()]));
+
+  console.log(response.json());
+}
+
+
+
+export const fetchPostsActionCreator = () => (dispatch, getState) => {
+
+    return dispatch(getBooks(book))
+  
 }

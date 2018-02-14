@@ -1,1 +1,1 @@
-export const FETCH_MESSAGE = 'FETCH_MESSAGE';
+export const GET_BOOK = 'GET_BOOK';

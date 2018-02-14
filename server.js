@@ -1,7 +1,6 @@
 const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
-const mongoose = require('mongoose');
 const consign = require('consign')
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -12,6 +11,7 @@ const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
 const app = express();
 var mysql = require('mysql');
+var axios = require('axios');
 
 
 var connection = mysql.createConnection({
@@ -55,10 +55,7 @@ if (isDeveloping) {
   //   res.end();
   // });
 } else {
-  app.use(express.static(__dirname + '/dist'));
-  app.get('*', function response(req, res) {
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
-  });
+  console.log('error with express');
 }
 app.get('/api/books', function(req, res) {
   var query = connection.query('select * from books', function(err, result) {

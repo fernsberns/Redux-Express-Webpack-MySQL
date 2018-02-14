@@ -1,9 +1,5 @@
-# webpack-express-react-redux-boilerplate
+Redux
 
-A boilerplate for running express with react and redux
-
-## Running
-
-1. cd webpack-express-react-redux-boilerplate
+1. cd to directorty
 2. npm install
 3. npm start

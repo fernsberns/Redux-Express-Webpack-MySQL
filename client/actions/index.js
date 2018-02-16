@@ -3,7 +3,7 @@ import { GET_BOOK } from './types';
 
 
 
-export function getBooks(book){
+export function getBooks(){
   console.log('This works, apparently.');
   
   const URL = "http://localhost:3000/api/books";
@@ -15,9 +15,3 @@ export function getBooks(book){
 }
 
 
-
-export const fetchPostsActionCreator = () => (dispatch, getState) => {
-
-    return dispatch(getBooks(book))
-  
-}

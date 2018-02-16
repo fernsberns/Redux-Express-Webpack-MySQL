@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts, fetchPostsActionCreator } from '../actions';
+// import { fetchPosts, fetchPostsActionCreator } from '../actions';
 import booksReducer from '../reducers/book_reducer';
 
 
@@ -8,7 +8,7 @@ import booksReducer from '../reducers/book_reducer';
 class App extends React.Component {
 
  constructor(props) {
-    super(props);c
+    super(props);
     this.state = {};
   }
 
@@ -17,9 +17,11 @@ class App extends React.Component {
 
     // const { getBooks } = this.props;
     // this.setState(getBooks());
-   
-    fetchPostsActionCreator()
+    // store.subscribe(() => {
 
+    // });
+
+    store.dispatch({ type: 'GET_BOOK'})
     //if you uncomment the code below and comment the fetchPostCreator it should work without redux. 
 
             // this._interval = setInterval(() => {
@@ -100,15 +102,16 @@ render() {
 
 
 
-function mapStateToProps(state){
-  return { book: state.book }
+const mapStateToProps = (state) => {
+  return { book: state.booksReducer }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
-    dispatch,
-    getBooks: () => dispatch(getBooks)
+    getBooks: () => dispatch({
+      type: "GET_BOOK",
+    })
   };
 }
 
-export default connect(mapStateToProps, { fetchPostsActionCreator })(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

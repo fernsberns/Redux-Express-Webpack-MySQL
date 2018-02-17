@@ -29,9 +29,11 @@ import { GET_BOOK } from '../actions/types';
 const booksReducer = (state = {}, action) => {
   switch (action.type) {
     case "GET_BOOK":
-    return {...state, posts: action.payload};
+    state = {...state, book: action.payload};
     case "FETCH_SUCCESS": 
-      return {...state, posts: action.payload};
+    state =  {...state, book: action.payload};
+      case "POST_BOOK":
+    state = {...state,book:action.payload}
     default:
       return state;
   }

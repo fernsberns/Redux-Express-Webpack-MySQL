@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { fetchPosts, fetchPostsActionCreator } from '../actions';
+import { postBook,getBooks } from '../actions';
 import booksReducer from '../reducers/book_reducer';
+// import store from '../index'
+// import postBook from '../actions/index'
 
 
 
@@ -21,7 +23,8 @@ class App extends React.Component {
 
     // });
 
-    store.dispatch({ type: 'GET_BOOK'})
+    this.props.getBooks()
+//  this.props.postBook()
     //if you uncomment the code below and comment the fetchPostCreator it should work without redux. 
 
             // this._interval = setInterval(() => {
@@ -39,7 +42,6 @@ class App extends React.Component {
             //   }
             // });
             // }, 200);
-
   }
 
   
@@ -49,22 +51,25 @@ class App extends React.Component {
 
 
   componentWillUnmount() {
+    
     clearInterval(this._interval);
   }
 
 
 renderList() {
+  console.log(this.state)
+  
   if(this.state.book){    
     return this.state.book.map((book) => {
         return (
           
             <tr
-                key={book.id}// onClick={() => this.props.selectUser(user)}
+                key={this.state.book.id}// onClick={() => this.props.selectUser(user)}
             >
-                <td>{book.id}   </td>             
-                <td>{book.title}</td>
-                <td>{book.author}</td>
-                <td>{book.genre}</td>
+                <td>{this.state.book.id}   </td>             
+                <td>{this.state.book.title}</td>
+                <td>{this.state.book.author}</td>
+                <td>{this.state.book.genre}</td>
                 <td><button className="btn btn-sm btn-danger" 
                 // onClick = { $.ajax({type: 'DELETE', url: '/api/books/'+ book.id}) }
                       ><i className="fa fa-trash text-white"></i></button></td>
@@ -97,6 +102,7 @@ render() {
       </div>
     );  
   }
+  
 };
   
 
@@ -108,9 +114,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getBooks: () => dispatch({
-      type: "GET_BOOK",
-    })
+    getBooks: () => dispatch(getBooks()),
+    postBook:()=>dispatch(postBook())
   };
 }
 

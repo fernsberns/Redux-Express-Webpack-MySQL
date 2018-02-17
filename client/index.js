@@ -9,8 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { logger } from 'redux-logger';
 
 const createStoreWithMiddleware =  applyMiddleware(reduxThunk,logger)(createStore);
-export const store = createStoreWithMiddleware(reducer);
-
+export  const store = createStoreWithMiddleware(reducer);
 
 
 ReactDOM.render(

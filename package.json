@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A boilerplate express with react and redux",
   "main": "server.js",
-  "author": "Matheus Elias",
+  "author": "John Bernad",
   "scripts": {
     "test": "",
     "start": "node server",

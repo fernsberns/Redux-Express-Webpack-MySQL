@@ -20,7 +20,7 @@ var connection = mysql.createConnection({
   password: 'password',
   database: 'react'
 });
-connection.connect();
+// connection.connect();
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -60,6 +60,7 @@ if (isDeveloping) {
 app.get('/api/books', function(req, res) {
   var query = connection.query('select * from books', function(err, result) {
     // console.log(query.sql);
+    console.log(err)
     res.json(result);
   });
 });

@@ -8,8 +8,9 @@ import booksReducer from '../reducers/book_reducer';
 class App extends React.Component {
 
  constructor(props) {
-    super(props);c
+    super(props);
     this.state = {};
+    
   }
 
 
@@ -18,7 +19,7 @@ class App extends React.Component {
     // const { getBooks } = this.props;
     // this.setState(getBooks());
    
-    fetchPostsActionCreator()
+    // fetchPostsActionCreator()
 
     //if you uncomment the code below and comment the fetchPostCreator it should work without redux. 
 
@@ -42,22 +43,23 @@ class App extends React.Component {
 
   
   componentDidMount() {
-
+    this.props.getBooks()
   }
 
 
   componentWillUnmount() {
     clearInterval(this._interval);
   }
-
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps,'new props');
+  }
 
 renderList() {
-  if(this.state.book){    
-    return this.state.book.map((book) => {
-        return (
-          
+  if(this.props.book){    
+    return this.props.book.posts.map((book, ind) => {
+        return (          
             <tr
-                key={book.id}// onClick={() => this.props.selectUser(user)}
+                key={ind}// onClick={() => this.props.selectUser(user)}
             >
                 <td>{book.id}   </td>             
                 <td>{book.title}</td>
@@ -76,6 +78,7 @@ renderList() {
 
 
 render() {
+  console.log(this.props.book,'book------')
     return (
       <div>
       <table className="table table-hover">
@@ -101,14 +104,13 @@ render() {
 
 
 function mapStateToProps(state){
-  return { book: state.book }
+  return { book: state.getBooks }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
-    getBooks: () => dispatch(getBooks)
+    getBooks: () => dispatch(fetchPostsActionCreator())
   };
 }
 
-export default connect(mapStateToProps, { fetchPostsActionCreator })(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

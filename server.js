@@ -17,7 +17,7 @@ var axios = require('axios');
 var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'password',
+  password: '123456789',
   database: 'react'
 });
 connection.connect();
@@ -59,15 +59,17 @@ if (isDeveloping) {
 }
 app.get('/api/books', function(req, res) {
   var query = connection.query('select * from books', function(err, result) {
-    // console.log(query.sql);
+    console.log(result, 'result -----------------');
     res.json(result);
   });
 });
 
 app.use(bodyParser.json());
 app.post('/api/books/add', function(req, res) {
-  console.log("Req body:", req.body);
+  // console.log("Req body:", req.body);
+  
   var newBook = req.body;
+  console.log(newBook, 'newbook');
   book = req.body;
         var query = connection.query('insert into books set ?', book, function (err, result) {
           console.log(query.sql);
@@ -80,6 +82,8 @@ app.post('/api/books/add', function(req, res) {
 });
 
 app.delete('/api/books/:id',function(req,res){
+
+
 	var id=req.params.id;
   console.log(id);
   var query = connection.query('DELETE FROM books WHERE id = ?;', id, function(err, result) {
@@ -91,5 +95,6 @@ app.listen(port, function onStart(err) {
   if (err) {
     console.log(err);
   }
+  console.log(port);
   console.info('Listening on port %s, Please open http://localhost:3000', port);
 });

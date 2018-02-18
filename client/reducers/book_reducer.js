@@ -24,9 +24,12 @@ import { GET_BOOK } from '../actions/types';
 // };
 
 // export default booksReducer;
+const INITIAL_STATE = {
+  posts: []
+}
 
 
-const booksReducer = (state = {}, action) => {
+const booksReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case "GET_BOOK":
     return {...state, posts: action.payload};

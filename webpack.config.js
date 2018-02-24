@@ -46,8 +46,8 @@ module.exports = {
         'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
       ]
     }, {
-      test: /\.css$/,
-      loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]'
+      test: /\.scss$/,
+      loaders: ['style', 'css', 'sass']
     }]
   }
 };

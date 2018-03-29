@@ -1,0 +1,72 @@
+
+.navclr{
+    background-color: rgb(244, 244, 244);
+        
+    }
+
+.bgclr{
+        background-color: rgb(244, 244, 244);
+        height: 100%;    
+        }
+.nvbr{
+    box-shadow: 1px 2px 3px lightgrey;
+}
+
+.container {
+    position: relative;
+    width: auto;
+    box-shadow: 1px 2px 3px rgb(213, 213, 213);    
+
+  }
+  
+  .image {
+    display: block;
+    height: 300px;
+    width: 200px;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .6s ease;
+    background-color: rgb(237, 237, 237);
+  }
+  
+  .container:hover .overlay {
+    opacity: 0.97;
+  }
+  
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .containeradd{
+    position: relative;
+    width: auto;
+    box-shadow: 1px 2px 3px rgb(213, 213, 213);    
+    
+  }
+  .overlayadd{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.95;
+    transition: .6s ease;
+    background-color: rgb(237, 237, 237);
+  }
